@@ -11,7 +11,7 @@ RUN apt-get update \
     && apt-get install -y google-chrome-stable fonts-noto-cjk fonts-freefont-ttf libxss1 \
       --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
-# if you want to use "headless: false", add xfvb and xauth
+# if you want to use "headless: false", add xvfb and xauth
 
 # Uncomment to skip the chromium download when installing puppeteer. If you do,
 # you'll need to launch puppeteer with:
