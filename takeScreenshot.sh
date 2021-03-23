@@ -9,7 +9,6 @@ const puppeteer = require('puppeteer');
 
 // constants
 const DL_PATH='/home/node/Downloads';
-const COOKIES=DL_PATH + '/cookies.json';
 
 async function scrollToBottom(page, viewportHeight) {
   const getScrollHeight = () => {
