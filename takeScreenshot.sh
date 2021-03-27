@@ -18,6 +18,7 @@ async function scrollToBottom(page, viewportHeight) {
   let scrollHeight = await page.evaluate(getScrollHeight);
   let currentPosition = 0;
 
+  // to bottom
   while (currentPosition < scrollHeight) {
 
     const nextPosition = currentPosition + viewportHeight;
@@ -31,6 +32,20 @@ async function scrollToBottom(page, viewportHeight) {
 
     // stop reevaluating scrollHeight when scrolling down
     //scrollHeight = await page.evaluate(getScrollHeight);
+    console.log("scrollHeight: " + scrollHeight);
+  }
+
+  // to top
+  while (currentPosition > 0) {
+
+    const nextPosition = currentPosition - viewportHeight;
+
+    await page.evaluate(function (scrollTo) {
+        return Promise.resolve(window.scrollTo(0, scrollTo))
+      }, nextPosition);
+
+    currentPosition = nextPosition;
+    console.log("currentPosition: " + currentPosition);
     console.log("scrollHeight: " + scrollHeight);
   }
 }
